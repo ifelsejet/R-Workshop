@@ -1,0 +1,26 @@
+---
+title: "ESL R Workshop"
+author: "Jatnael Montes"
+date: "10/17/2019"
+output: html_document
+---
+
+This is an R Markdown enviroment
+```{r}
+library("tidyverse")
+big_epa_cars <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-15/big_epa_cars.csv")
+df <- big_epa_cars
+
+head(df)
+mean(df$city08)
+median(df$city08)
+sd(df$city08)
+summary(df$city08)
+summary(df$year)
+
+ggplot(df, aes(x = year, y = city08)) + geom_point() + geom_smooth()
+
+ggplot(df, aes(x = fuelType, y = city08, fill = fuelType)) + geom_boxplot() + coord_flip() + labs(title = "US Car Fuel Economy", subtitle = "ESL R Workshop at UC Merced", caption = "Source: fueleconomy.gov", x = "fuel type", y = "miles per gallon")+
+  theme_minimal()
+```
+
